@@ -6,3 +6,4 @@ export interface Note {
   updatedAt: string;
   tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 }
+

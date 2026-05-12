@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { getNotes } from '@/lib/api';
+import { getNotes } from '@/lib/api/api';
 
 import css from './NotesPage.module.css';
 
