@@ -4,7 +4,7 @@ import { checkServerSession } from './lib/api/serverApi';
 import { parse } from 'cookie';
 
 const privateRoutes = ['/profile', '/notes'];
-const publicRoutes = ['/sign-in', '/sing-up'];
+const publicRoutes = ['/sign-in', '/sign-up'];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -12,8 +12,8 @@ export async function proxy(request: NextRequest) {
   const accessToken = cookieStore.get('accessToken')?.value;
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
-  const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route));
-  const isPrivateRoute = privateRoutes.some((route) => pathname.startsWith(route));
+  const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route));
+  const isPrivateRoute = privateRoutes.some(route => pathname.startsWith(route));
 
   if (!accessToken) {
     if (refreshToken) {
@@ -78,7 +78,7 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/profile', '/notes/:path*', '/sign-in', '/sign-up'],
+  matcher: ['/profile/:path*', '/notes/:path*', '/sign-in', '/sign-up'],
 };
 
 // acessToken=true > /login >  isPublicRoute true > redirect to /

@@ -25,7 +25,12 @@ export const getNotes = async (
 };
 
 export const fetchNoteById = async (id: string) => {
-  const response = await nextServer.get<Note>(`/notes/${id}`);
+  const cookieStore = await cookies();
+  const response = await nextServer.get<Note>(`/notes/${id}`, {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
   return response.data;
 };
 
@@ -40,7 +45,6 @@ export const getMe = async () => {
   return data;
 };
 
-
 export const checkServerSession = async () => {
   // Дістаємо поточні cookie
   const cookieStore = await cookies();
@@ -53,6 +57,3 @@ export const checkServerSession = async () => {
   // Повертаємо повний респонс, щоб proxy мав доступ до нових cookie
   return res;
 };
-
-
-

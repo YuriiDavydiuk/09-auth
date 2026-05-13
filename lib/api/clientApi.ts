@@ -92,7 +92,6 @@ export interface UpdateRequest {
 }
 
 export const updateMe = async (data: UpdateRequest) => {
-   console.log('updateMe data:', data)
   const res = await nextServer.patch<User>('/users/me', data);
-  return res.data
+  return res.data;
 };
