@@ -3,7 +3,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { fetchNoteById } from '@/lib/api/clientApi';
+<<<<<<< HEAD
 import css from '.NotePreview.module.css';
+=======
+import css from './NotePreview.module.css';
+>>>>>>> a4b1fcaef22892edcab0b32952ba433f6d4f90db
 import ModalPreview from '@/components/Modal/Modal';
 
 interface Props {
