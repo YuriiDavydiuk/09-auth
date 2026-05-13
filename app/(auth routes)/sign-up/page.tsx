@@ -4,8 +4,11 @@ import css from './SignUpPage.module.css';
 import { register, RegisterRequest } from '@/lib/api/clientApi';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { ApiError } from '@/app/api/api';
+import { AxiosError } from 'axios';
+
 import { useAuthStore } from '@/lib/store/authStore';
+
+export type ApiError = AxiosError<{ error: string }>;
 
 export default function SignUp() {
   const router = useRouter();
