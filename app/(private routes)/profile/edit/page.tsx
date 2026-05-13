@@ -27,7 +27,7 @@ export default function EditProfile() {
         <h1 className={css.formTitle}>Edit Profile</h1>
 
         <Image
-          src={user?.avatar ?? '/public/241817.jpg'}
+          src={user?.avatar ?? '/241817.jpg'}
           alt="User Avatar"
           width={120}
           height={120}
@@ -36,7 +36,7 @@ export default function EditProfile() {
 
         <form className={css.profileInfo} action={handleUpdate}>
           <div className={css.usernameWrapper}>
-            <label htmlFor="username">Username:{user?.username}</label>
+            <label htmlFor="username">Username:</label>
             <input
               id="username"
               name="username"
@@ -52,11 +52,7 @@ export default function EditProfile() {
             <button type="submit" className={css.saveButton}>
               Save
             </button>
-            <button
-              type="button"
-              className={css.cancelButton}
-              onClick={() => router.push('/profile')}
-            >
+            <button type="button" className={css.cancelButton} onClick={() => router.back()}>
               Cancel
             </button>
           </div>
