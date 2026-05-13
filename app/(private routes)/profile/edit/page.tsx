@@ -14,7 +14,6 @@ export default function EditProfile() {
 
   const handleUpdate = async (formData: FormData) => {
     const values: UpdateRequest = {
-      email: user?.email ?? '',
       username: formData.get('username') as string,
     };
     const updateUser = await updateMe(values);

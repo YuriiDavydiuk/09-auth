@@ -3,7 +3,7 @@ import { api } from '@/app/api/api';
 import { cookies } from 'next/headers';
 import { parse } from 'cookie';
 import { isAxiosError } from 'axios';
-import { logErrorResponse } from '@/app/api/auth/_utils/utils';
+import { logErrorResponse } from '@/app/api/_utils/utils';
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +13,6 @@ export async function POST(req: NextRequest) {
 
     const cookieStore = await cookies();
     const setCookie = apiRes.headers['set-cookie'];
- 
 
     if (setCookie) {
       const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];

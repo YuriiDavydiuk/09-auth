@@ -87,7 +87,6 @@ export const getMe = async () => {
 };
 
 export interface UpdateRequest {
-  email: string;
   username: string;
 }
 
