@@ -1,4 +1,4 @@
-import { nextServer } from '@/lib/api/api';
+import { nextServer } from './api';
 import { Note } from '@/types/note';
 import { User } from '@/types/user';
 
@@ -48,23 +48,51 @@ export const deleteNote = async (id: string) => {
 
 //AUTH
 
-export interface LoginRequest  {
-    email: string;
-    password: string
+export interface RegisterRequest {
+  email: string;
+  password: string;
 }
 
-
-export const register = async(data: LoginRequest) => {
-    const res = await nextServer.post<User>(`auth/register`, data)
-    return res.data
+export const register = async (data: RegisterRequest) => {
+  const res = await nextServer.post<User>(`auth/register`, data);
+  return res.data;
 };
 
-export const login = () => {};
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
 
-export const logout = () => {};
+export const login = async (data: LoginRequest) => {
+  const res = await nextServer.post<User>('auth/login', data);
+  return res.data;
+};
 
-export const checkSession = () => {};
+export const logout = async (): Promise<void> => {
+  await nextServer.post('/auth/logout');
+};
 
-export const getMe = () => {};
+interface CheckSessionRequest {
+  success: boolean;
+}
 
-export const updateMe = () => {};
+export const checkSession = async () => {
+  const res = await nextServer.get<CheckSessionRequest>('auth/session');
+  return res.data.success;
+};
+
+export const getMe = async () => {
+  const { data } = await nextServer.get<User>('/users/me');
+  return data;
+};
+
+export interface UpdateRequest {
+  email: string;
+  username: string;
+}
+
+export const updateMe = async (data: UpdateRequest) => {
+   console.log('updateMe data:', data)
+  const res = await nextServer.patch<User>('/users/me', data);
+  return res.data
+};
